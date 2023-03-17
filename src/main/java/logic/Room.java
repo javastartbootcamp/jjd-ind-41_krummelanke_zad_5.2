@@ -41,35 +41,26 @@ public class Room {
         return minTemperature;
     }
 
-    public void setMinTemperature(double minTemperature, Room room) {
+    public void setMinTemperature(double minTemperature) {
         if (isAirConInstalled()) {
             this.minTemperature = minTemperature;
-        } else {
-            ShowRoomInfo info = new ShowRoomInfo();
-            info.noAirConMessage(room);
         }
     }
 
-    public double decreaseTemperature(Room room) {
-        ShowRoomInfo info = new ShowRoomInfo();
+    public boolean decreaseTemperature() {
+
         if (isAirConInstalled()) {
-            if (room.temperature < (room.minTemperature + 1)) {
-                room.temperature = room.minTemperature;
-                info.tempReachedLimit(room);
-                return room.temperature;
+            if (temperature > minTemperature + 1) {
+                temperature -= 1;
+                return true;
+            } else if (temperature <= minTemperature + 1 && temperature >= minTemperature) {
+                temperature = minTemperature;
+                return true;
             } else {
-                if (room.temperature > room.minTemperature) {
-                    room.temperature -= 1;
-                    info.showUpdatedInfo(room);
-                    return room.temperature;
-                } else {
-                    info.tempReachedLimit(room);
-                    return room.temperature;
-                }
+                return false;
             }
         } else {
-            info.noAirConMessage(room);
-            return room.temperature;
+            return false;
         }
     }
 }

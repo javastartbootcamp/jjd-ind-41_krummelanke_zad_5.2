@@ -12,18 +12,15 @@ public class Main {
         ShowRoomInfo info = new ShowRoomInfo();
 
         info.showRoomInfo(greenRoom);
-        greenRoom.decreaseTemperature(greenRoom);
-        greenRoom.setMinTemperature(30, greenRoom);
-        greenRoom.decreaseTemperature(greenRoom);
+        greenRoom.setMinTemperature(30);
+        info.testRoom(greenRoom);
 
         info.showRoomInfo(darkRoom);
-        darkRoom.setMinTemperature(21, darkRoom);
-        darkRoom.decreaseTemperature(darkRoom);
-        darkRoom.decreaseTemperature(darkRoom);
+        darkRoom.setMinTemperature(21);
+        info.testRoom(darkRoom);
 
         info.showRoomInfo(yellowRoom);
-        yellowRoom.setMinTemperature(21, yellowRoom);
-        yellowRoom.decreaseTemperature(yellowRoom);
-
+        yellowRoom.setMinTemperature(21);
+        info.testRoom(yellowRoom);
     }
 }
